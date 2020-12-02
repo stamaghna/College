@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Plane Tickets</title>
+</head>
+<body>
+<p>
+<h3>Plane tickets specially during COVID</h3>
+</p>
+<p>
+
+<!--Form for 3.1-->
+<form action="./Discountprice" method="get">
+<button type="submit">Show Prices</button>
+</form>
+
+
+
+</p>
+<h3>Filter Plane tickets to get COVID royalty flights</h3>
+<p>
+
+<!--Form for 3.2-->
+<form name="FilterFlight" action="./Filterprice" method="get" onsubmit="return (validatevalue());">
+<label for="stct">Select Departure City:</label>
+<select id="stct" name="stct">
+    <!--<option disabled selected value="">Please select value</option>-->
+    <option value = "KOLKATA">KOLKATA</option>
+    <option value = "DELHI">DELHI</option>
+    <option value = "MUMBAI">MUMBAI</option>
+</select><br><br>
+<label for="dtct">Select Destination City:</label>
+<select id="dtct" name="dtct">
+    <!--<option disabled selected value="">Please select value</option>-->
+    <option value = "KOLKATA">KOLKATA</option>
+    <option value = "DELHI">DELHI</option>
+    <option value = "MUMBAI">MUMBAI</option>
+</select>
+<br><br>
+<label for="dt">Date:</label>
+<input type="date" id="dt" name="dt" required>
+<br><br>
+<button type="submit">Filter Flight</button>
+</p>
+</form>
+</body>
+<script>
+    function validatevalue(){
+        let today = new Date().toISOString().slice(0, 10);
+
+        var strtct=document.forms["FilterFlight"]["stct"];
+        var endct=document.forms["FilterFlight"]["dtct"];
+        var dt=new Date(document.forms["FilterFlight"]["dt"].value).toISOString().slice(0, 10);
+        console.log(strtct.value);
+        console.log(endct.value);
+        console.log(dt);
+        console.log(today);
+        //today=Date.UTC( today.getFullYear (), curdate.getMonth(), curdate.getDate(),0,0,0,0);
+        //console.log(today);
+        /*if (strtct.value==""){
+            window.alert("Please enter Departure City.");  
+            return false; 
+        }
+        else if (endct.value==""){
+            window.alert("Please enter Destination City.");  
+            return false; 
+        }
+        else if (dt.value==""){
+            window.alert("Please enter Date.");  
+            return false; 
+        }
+        else */if (strtct.value==endct.value){
+            window.alert("Please enter different cities.");  
+            return false;
+        }
+        else if(dt < today){
+            window.alert("Please enter valid dates.");  
+            return false;
+        }
+        else if(dt==null){
+            window.alert("Date cannot be null.");  
+            return false;
+        }
+        else
+            return true;
+    };
+
+    
+</script>
+
+</html>
