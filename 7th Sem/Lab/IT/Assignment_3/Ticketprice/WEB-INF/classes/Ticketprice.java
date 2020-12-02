@@ -31,35 +31,35 @@ public class Ticketprice extends HttpServlet
 		//Setting JDBC
 		String dbClassName = "com.mysql.jdbc.Driver";
    		String url = "jdbc:mysql://127.0.0.1:3306/tommy";
-    	String user = "root";
-    	String password = "12345678";
-        try {
-            Class.forName(dbClassName);
-            Connection con = DriverManager.getConnection(url, user, password);
+    		String user = "root";
+    		String password = "12345678";
+        	try {
+           	 Class.forName(dbClassName);
+		 Connection con = DriverManager.getConnection(url, user, password);
             //console.log("Success");
 
 //SQL STATEMENT
-			Statement stmt = con.createStatement();
-			String sql;
+		Statement stmt = con.createStatement();
+		String sql;
          	sql = "SELECT * FROM DISCOUNT;";
          	ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
+		while(rs.next()){
             //Retrieve by column name
 //CREATE TABLE DISCOUNT(FLTID CHAR(3) PRIMARY KEY, STRTCT CHAR(15), DESTCT CHAR(15), PRICE INT, STDT DATE, ENDDT DATE);
-            String flightid = rs.getString("FLTID");
-            String startct = rs.getString("STRTCT");
-			String destct = rs.getString("DESTCT");
-			int price = rs.getInt("PRICE");
-			String startdt = rs.getDate("STDT").toString();
-			String enddt = rs.getDate("ENDDT").toString();
-			out.println("<tr><td>"+flightid+"</td>");
-			out.println("<td>"+startct+"</td>");
-			out.println("<td>"+destct+"</td>");
-			out.println("<td>"+price+"</td></tr>");
+		String flightid = rs.getString("FLTID");
+     		String startct = rs.getString("STRTCT");
+		String destct = rs.getString("DESTCT");
+		int price = rs.getInt("PRICE");
+		String startdt = rs.getDate("STDT").toString();
+		String enddt = rs.getDate("ENDDT").toString();
+		out.println("<tr><td>"+flightid+"</td>");
+		out.println("<td>"+startct+"</td>");
+		out.println("<td>"+destct+"</td>");
+		out.println("<td>"+price+"</td></tr>");
          	}
-        } catch (Exception e) {
+        	} catch (Exception e) {
             //console.log(e.getMessage());
-        }
+        	}
 		out.println("</html");
 		out.close();
 	}
